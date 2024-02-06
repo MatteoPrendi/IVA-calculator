@@ -1,0 +1,78 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: grid;
+  place-content: center;
+  font-family: "Rubik", sans-serif;
+  margin: 0;
+}
+
+label {
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+input {
+  width: 90%;
+  font-size: 1.25rem;
+  padding: 1rem;
+  margin: 0 auto;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  border: 2px solid #c9c9c9;
+  border-radius: 1rem;
+  gap: 1rem;
+}
+
+section > div {
+  text-align: center;
+}
+
+p {
+  font-weight: 400;
+}
+
+.heading {
+  font-size: 1.5rem;
+  font-weight: 600;
+  padding: 1rem 0;
+}
+
+.error-text {
+  visibility: hidden;
+  text-align: center;
+  color: red;
+  margin: 1rem 0 2rem;
+}
+
+.show {
+  visibility: visible;
+}
+
+@media only screen and (min-width: 1024px) {
+  input {
+    width: 50%;
+  }
+
+  section {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  display: none;
+}
