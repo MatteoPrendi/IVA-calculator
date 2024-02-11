@@ -1,34 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600&display=swap" />
     <link rel="stylesheet" href="style.css" />
     <script defer src="script.js"></script>
     <title>Calcolatore IVA</title>
   </head>
+
   <body>
-    <label for="total">Totale</label>
-    <input type="number" id="total" />
-    <p class="error-text">Il totale dev'essere minore di 1.000.000€</p>
+    <h1>TOTALE</h1>
+    <input type="text" />
+    <p>Il totale non può superare 1.000.000€</p>
 
-    <section>
+    <div id="table">
       <div>
-        <p class="heading">IVA (22%)</p>
-        <p id="IVA">0.00 €</p>
-      </div>
-      <div>
-        <p class="heading">Commissione (8%)</p>
-        <p id="commission">0.00 €</p>
+        <h2>IVA</h2>
+        <p id="iva">0,00€</p>
       </div>
 
       <div>
-        <p class="heading">Profitto</p>
-        <p id="profit">0.00 €</p>
+        <h2>COMMISSIONE</h2>
+        <p id="cms">0,00€</p>
       </div>
-    </section>
+
+      <div>
+        <h2>PROFITTO</h2>
+        <p id="pft">0,00€</p>
+      </div>
+    </div>
   </body>
 </html>

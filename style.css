@@ -6,6 +6,17 @@
   margin: 0;
 }
 
+:root {
+  --accent: hsl(240, 75%, 60%);
+  --border: hsl(0, 0%, 80%);
+  --border-radius: 0.25rem;
+}
+
+::selection {
+  color: white;
+  background-color: var(--accent);
+}
+
 body {
   min-height: 100vh;
   display: grid;
@@ -14,65 +25,59 @@ body {
   margin: 0;
 }
 
-label {
-  font-size: 3rem;
+h1 {
   text-align: center;
-  margin-bottom: 0.5rem;
+  font-size: 3rem;
+  margin-bottom: 1rem;
 }
 
 input {
-  width: 90%;
+  width: 80vw;
+  max-width: 640px;
+  text-align: center;
   font-size: 1.25rem;
-  padding: 1rem;
-  margin: 0 auto;
+  padding: 0.75rem;
+  border: 2px solid var(--accent);
+  border-radius: var(--border-radius);
+  outline: 0 none;
+  margin-bottom: 0.675rem;
 }
 
-section {
+body > p {
+  text-align: center;
+  font-weight: 500;
+  color: red;
+}
+
+#table {
   display: flex;
   flex-direction: column;
+  margin-top: 2.25rem;
+  gap: 1.5rem;
+}
+
+#table div {
+  text-align: center;
   padding: 1rem;
-  border: 2px solid #c9c9c9;
-  border-radius: 1rem;
-  gap: 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius);
 }
 
-section > div {
-  text-align: center;
+#table h2 {
+  margin-bottom: 0.375rem;
 }
 
-p {
-  font-weight: 400;
-}
-
-.heading {
-  font-size: 1.5rem;
-  font-weight: 600;
-  padding: 1rem 0;
-}
-
-.error-text {
-  visibility: hidden;
-  text-align: center;
-  color: red;
-  margin: 1rem 0 2rem;
-}
-
-.show {
-  visibility: visible;
-}
-
-@media only screen and (min-width: 1024px) {
-  input {
-    width: 50%;
+@media only screen and (min-width: 640px) {
+  body > p {
+    font-size: 1.25rem;
   }
 
-  section {
+  #table {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
-}
 
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  display: none;
+  #table > div:last-child {
+    grid-column: 1 / 3;
+  }
 }

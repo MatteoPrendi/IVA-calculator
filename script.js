@@ -1,26 +1,37 @@
 const input = document.querySelector("input");
-const errorText = document.querySelector(".error-text");
-const IVA = document.querySelector("#IVA");
-const commission = document.querySelector("#commission");
-const profit = document.querySelector("#profit");
+const ivaText = document.querySelector("#iva");
+const commissionText = document.querySelector("#cms");
+const profitText = document.querySelector("#pft");
+const formatter = new Intl.NumberFormat("it-IT", { style: "currency", currency: "EUR", maximumFractionDigits: 2 });
 
-input.addEventListener("input", () => {
-  if (input.value.length > 7) {
-    input.value = input.value.slice(0, 7);
-    errorText.classList.add("show");
-  } else {
-    errorText.classList.remove("show");
-  }
-
-  function output(element, percentage) {
-    element.textContent = new Intl.NumberFormat("it-IT", { style: "currency", currency: "EUR" }).format(
-      input.value * (percentage / 100)
-    );
-  }
-
-  output(IVA, 22);
-  output(commission, 8);
-  output(profit, 70);
+input.addEventListener("keydown", e => {
+  if (
+    (isNaN(e.key) && e.key !== "Backspace" && e.key !== "Delete") ||
+    (e.target.value.length > 6 && e.key !== "Backspace" && e.key !== "Delete")
+  )
+    e.preventDefault();
 });
 
-input.addEventListener("input", () => {});
+input.addEventListener("input", e => {
+  input.value = formatTotal(input.value);
+  formatCards(ivaText, 22);
+  formatCards(commissionText, 8);
+  formatCards(profitText, 70);
+});
+
+function formatTotal(total) {
+  if (total[0] === "0") return "";
+  if (total.length < 4) return total;
+
+  total = stripDots(total);
+  return total.toLocaleString("it-IT", { maximumFractionDigits: 0 });
+}
+
+function formatCards(element, percentage) {
+  number = stripDots(input.value);
+  element.textContent = formatter.format(number * (percentage / 100));
+}
+
+function stripDots(number) {
+  return parseInt(number.replace(/[\.]/g, ""));
+}
